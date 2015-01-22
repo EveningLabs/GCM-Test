@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GCM-Test</string>
+
+    <string name="key_google_public_api_access_server"></string>
+    <string name="google_play_project_number"></string>
+
+</resources>
