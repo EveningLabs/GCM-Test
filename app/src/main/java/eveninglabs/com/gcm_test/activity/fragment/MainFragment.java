@@ -66,39 +66,13 @@ public class MainFragment extends Fragment {
 
     String regid;
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String PARAM_RECEIVE_MESSAGE = "receive_message";
-
-    private String receiveMessage;
-
     public MainFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param receiveMessage Parameter 1.
-     * @return A new instance of fragment MainFragment.
-     */
-    public static MainFragment newInstance(String receiveMessage) {
-        Bundle mBundle = new Bundle();
-        mBundle.putString(PARAM_RECEIVE_MESSAGE, receiveMessage);
-
-        MainFragment mMainFragment = new MainFragment();
-        mMainFragment.setArguments(mBundle);
-
-        return mMainFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (null != getArguments()) {
-            receiveMessage = getArguments().getString(PARAM_RECEIVE_MESSAGE);
-        }
 
         context = getActivity().getApplicationContext();
 
@@ -127,11 +101,6 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         display = (TextView) view.findViewById(R.id.display);
         message = (EditText) view.findViewById(R.id.message);
-
-        // 푸쉬 알람을 받고 노티피케이션 알림을 통해서 들어온 경우
-        if (null != receiveMessage && !receiveMessage.isEmpty()) {
-            display.append("\n" + new SimpleDateFormat("HHmmss").format(Calendar.getInstance().getTime()) + " RECEIVE: " + receiveMessage);
-        }
 
         submit = (Button) view.findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
